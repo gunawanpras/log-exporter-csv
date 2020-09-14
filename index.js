@@ -8,9 +8,9 @@ const server = http.createServer(app);
 
 const port = 3001;
 
-const LogController = require('./LogController');
+const logExports = require('./Logger');
 
-app.use('/logs/export/csv', LogController.exportLog);
+app.use('/logs/export/csv', logExports);
 
 /**
  * Event listener for HTTP server "error" event.
