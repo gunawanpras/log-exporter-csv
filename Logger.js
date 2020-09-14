@@ -39,11 +39,11 @@ const exportLog = (req, res, next) => {
 
         rdline
         .on('line', line => {
-            const date = line.match(/[a-zA-Z]{3,4}\s[0-9]{2}\s(2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]/g);
+            const date      = line.match(/[a-zA-Z]{3,4}\s[0-9]{2}\s(2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]/g);
             const server_ip = line.match(server_ip_pattern);                
-            const user_ip = line.match(user_ip_pattern);
-            const id = line.match(/sys:\sid:/g);
-            const url_ = line.match(url_pattern);
+            const user_ip   = line.match(user_ip_pattern);
+            const id        = line.match(/sys:\sid:/g);
+            const url_      = line.match(url_pattern);
             
             if (user_ip) {
                 set_id = false;
@@ -51,7 +51,12 @@ const exportLog = (req, res, next) => {
 
                 const log_date = moment( new Date(date[0]) );
                 log_date.set({ year: 2019 });
-                log_data = { date_created: log_date.format('YYYY-MM-DD hh:mm:ss'), server_ip: server_ip[0], user_ip: user_ip[0] };
+                log_data = { 
+                    date_created: log_date.format('YYYY-MM-DD hh:mm:ss'), 
+                    server_ip: server_ip[0], 
+                    user_ip: user_ip[0] 
+                };
+                
                 set_url = true;
             }
             else if (id) set_id = true;
