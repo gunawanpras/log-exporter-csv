@@ -6,7 +6,6 @@ on:
       event_type:
         description: 'Event Type'
         required: true
-        default: 'build'    
   # push:
   pull_request:
     types: [closed, assigned, opened, reopened]
