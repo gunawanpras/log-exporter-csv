@@ -1,13 +1,12 @@
 name: Action Workflow
 
 on:
-  workflow_dispatch:    
+  workflow_dispatch:
     inputs:
       event_type:
         description: 'Event Type'
         required: true
-        default: 'build'
-    types: [build]
+        default: 'build'    
   # push:
   pull_request:
     types: [closed, assigned, opened, reopened]
