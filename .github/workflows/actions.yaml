@@ -6,8 +6,8 @@ on:
       event_type:
         description: 'Event Type'
         required: true
-        default: 'build'
-    types: [${{ github.event.inputs.event_type }}]
+        default: 'empty'
+    types: ["${{ github.event.inputs.event_type }}"]
   # push:
   pull_request:
     types: [closed, assigned, opened, reopened]
