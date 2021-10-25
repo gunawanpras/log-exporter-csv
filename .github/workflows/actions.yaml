@@ -6,7 +6,7 @@ on:
       event_type:
         description: 'Event Type'
         required: true
-        default: 'empty'
+        default: 'build'
     types: [build]
   # push:
   pull_request:
