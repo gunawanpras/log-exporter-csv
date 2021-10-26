@@ -14,12 +14,30 @@ on:
   pull_request:
     types: [closed, assigned, opened, reopened]
 
-jobs:
+jobs:  
   create_commit:
     runs-on: ubuntu-latest 
     permissions:
       issues: write 
     steps:
+      - name: Push a random File
+        run: |
+          pwd
+          ls -l
+          git init .
+          git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
+          git config --global user.email "bot@bot.id"
+          git config --global user.name "Bot"
+          git fetch
+          git checkout master
+          git branch --set-upstream-to origin/devel
+          git pull
+          ls -l
+          echo $RANDOM >> random.txt
+          ls -la
+          git add -A
+          git commit -m "Added Random File"
+          git push
       - name: Create issue using REST API
         run: |
           curl --request POST \
