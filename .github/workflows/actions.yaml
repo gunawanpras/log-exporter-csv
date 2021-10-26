@@ -6,7 +6,11 @@ on:
       event_type:
         description: 'Event Type'
         required: true
-  # push:
+  push:
+    branches:
+      - master
+      - 'feature/*'
+      - devel
   pull_request:
     types: [closed, assigned, opened, reopened]
 
