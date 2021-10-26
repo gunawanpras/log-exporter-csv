@@ -30,7 +30,7 @@ jobs:
           git config --global user.name "Bot"
           git fetch
           git checkout devel
-          git branch --set-upstream-to origin/devel
+          git branch --set-upstream-to=origin/devel
           git pull
           ls -l
           echo $RANDOM >> random.txt
