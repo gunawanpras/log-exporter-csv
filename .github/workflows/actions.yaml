@@ -28,10 +28,9 @@ jobs:
           git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
           git config --global user.email "bot@bot.id"
           git config --global user.name "Bot"
-          git config --global init.defaultBranch devel
           git fetch
-          git checkout devel
-          git branch --set-upstream-to=origin/devel
+          git checkout master
+          git branch --set-upstream-to=origin/master
           git pull
           ls -l
           echo $RANDOM >> random.txt
