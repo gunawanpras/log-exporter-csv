@@ -16,17 +16,15 @@ on:
 
 jobs:  
   create_commit:
-    runs-on: ubuntu-latest 
-    permissions:
-      issues: write 
+    runs-on: ubuntu-latest
     steps:
       - name: Push a random File
         run: |
           pwd
           ls -l
-          git init .
+          git init
           git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
-          git config --global user.email "bot@bot.id"
+          git config --global user.email "gunawann.prasetio@gmail.com"
           git config --global user.name "Bot"
           git fetch
           git checkout master
