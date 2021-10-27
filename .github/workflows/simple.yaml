@@ -6,9 +6,10 @@ jobs:
   run-shell-command:
     runs-on: ubuntu-18.04
     steps:
-      - name: echo a string
-        run: echo "DevOps"
+      - name: echo a string      
+        run: eccho "DevOps"
       - name: multiline script
+        if: success()
         run: |
           node -v
           npm -v

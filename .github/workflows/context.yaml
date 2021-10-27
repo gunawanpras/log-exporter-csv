@@ -10,9 +10,11 @@ jobs:
           echo ${{ contains('hello', 'll') }}
           echo ${{ startsWith('hello', 'he') }}
           echo ${{ endsWith('hello', 'lo') }}
-          echo ${{ format('Hello {0} {1}{2}', 'World', '!', '!') }}
+          eccho ${{ format('Hello {0} {1}{2}', 'World', '!', '!') }}
+        continue-on-error: true
   one:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     steps:
       - name: Dump GitHub context
         env:
