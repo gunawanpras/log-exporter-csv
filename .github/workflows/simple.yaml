@@ -9,7 +9,7 @@ jobs:
       - name: echo a string      
         run: eccho "DevOps"
       - name: multiline script
-        if: success()
+        if: failure()
         run: |
           node -v
           npm -v
