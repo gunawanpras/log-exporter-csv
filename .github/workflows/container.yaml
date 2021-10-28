@@ -2,6 +2,23 @@ name: Container
 on: push
 
 jobs:
+  docker-steps:
+    runs-on: ubuntu-latest
+    container:
+      image: node:17-alpine3.13
+    steps:
+      - name: Log Node Version
+        run: node -v
+      - name: Step with Docker
+        uses: docker://node:16-bullseye-slim
+        with:
+          entrypoint: "/bin/echo"
+          args: "Hello World"
+      - name: Log Node Version
+        uses: docker://node:16-bullseye-slim
+        with:
+          entrypoint: /usr/local/bin/node
+          args: -v
   node-docker:
     runs-on: ubuntu-latest
     services: 
@@ -15,6 +32,4 @@ jobs:
           - "27017:27017"
     steps:
       - name: Generate CSV file
-        run: "curl -X GET http://localhost:3002/logs/export/csv -H 'Content-Type: application/json'"
-      - name: See Output
-        run: ls -la /usr/src/app/output
+        run: "curl -X GET http://localhost:3002/logs/export/csv -H 'Content-Type: application/json'"      
